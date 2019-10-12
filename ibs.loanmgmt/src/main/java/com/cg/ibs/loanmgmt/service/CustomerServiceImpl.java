@@ -167,8 +167,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	public boolean sendPreClosureForVerification(LoanMaster loanMaster) throws FileNotFoundException, IOException {
 
-		return customerDao
-				.sendPreClosureForVerification(loanMaster); /* Sending data */
+		return customerDao.sendPreClosureForVerification(loanMaster); /* Sending data */
 	}
 
 	private LoanMaster getInterestRate(LoanMaster loanMaster) {

@@ -32,9 +32,7 @@ public interface CustomerService {
 
 	// ViewLoanDetails
 
-	public List<LoanMaster> getHistory(String userId); // getting collection of
-														// all the loans realted
-														// to given userID
+	public List<LoanMaster> getHistory(String userId); /*getting collection of all the loans realted to given userID*/
 
 	// PreClosure
 

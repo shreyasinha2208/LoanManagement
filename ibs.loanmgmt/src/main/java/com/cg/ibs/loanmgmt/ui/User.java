@@ -28,7 +28,7 @@ public class User implements ExceptionMessages {
 		UserOptions choice = null;
 		while (choice != UserOptions.EXIT) {
 			System.out.println("Login as an existing customer or admin? ");
-			System.out.println("--------------------");
+			System.out.println("------------------------");
 			for (UserOptions menu : UserOptions.values()) {
 				System.out.println((menu.ordinal() + 1) + "\t" + menu);
 			}
@@ -40,7 +40,6 @@ public class User implements ExceptionMessages {
 				int ordinal = Integer.parseInt(userLoginInput);
 				if (ordinal >= 1 && ordinal < (UserOptions.values().length) + 1) {
 					choice = UserOptions.values()[ordinal - 1];
-
 					switch (choice) {
 					case EXISTING_CUSTOMER:
 						init();
@@ -222,7 +221,7 @@ public class User implements ExceptionMessages {
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println(loan);
+		System.out.println("---------*********---------\n\n"+loan);
 		addLoan(loan);
 	}
 
@@ -247,7 +246,7 @@ public class User implements ExceptionMessages {
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println(loan);
+		System.out.println("---------*********---------\n\n"+loan);
 		addLoan(loan);
 	}
 
@@ -272,7 +271,7 @@ public class User implements ExceptionMessages {
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println(loan);
+		System.out.println("---------*********---------\n\n"+loan);
 		addLoan(loan);
 	}
 
@@ -297,7 +296,7 @@ public class User implements ExceptionMessages {
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println(loan);
+		System.out.println("---------*********---------\n\n"+loan);
 		addLoan(loan);
 	}
 

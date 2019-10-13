@@ -49,7 +49,8 @@ public class LoanBean {
 
 	@Override
 	public String toString() {
-		return "Loan Type\t :" + loanType + "\nLoan Amount\t :" + loanAmount + "\nLoan Tenure\t :" + loanTenure
-				+ "\nInterest Rate\t :" + interestRate + "\nEMI Amount\t :" + emiAmount;
+		return "Loan Type\t :" + loanType + "\nLoan Amount\t :Rs " + loanAmount + "\nLoan Tenure\t :" + loanTenure
+				+ " months\nInterest Rate\t :" + interestRate + "%\nEMI Amount\t :Rs "
+				+ String.format("%.2f", emiAmount);
 	}
 }

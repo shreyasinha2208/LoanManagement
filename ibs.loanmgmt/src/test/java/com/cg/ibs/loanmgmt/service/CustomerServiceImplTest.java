@@ -15,8 +15,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.cg.ibs.loanmgmt.bean.CustomerBean;
+import com.cg.ibs.loanmgmt.bean.Document;
 import com.cg.ibs.loanmgmt.bean.LoanMaster;
 import com.cg.ibs.loanmgmt.bean.LoanType;
+import com.cg.ibs.loanmgmt.exception.IBSException;
 
 class CustomerServiceImplTest {
 	private static CustomerServiceImpl customerService = new CustomerServiceImpl();
@@ -434,4 +436,48 @@ class CustomerServiceImplTest {
 		assertTrue(actual);
 	}
 
+	@Test
+	void getDocumentTestPositive() {
+		Document documentTemp = new Document();
+		String voterId = "VoterIDCard";
+		String pathOfDocument = "C://Users//Lenovo//Downloads//sample.pdf";
+		documentTemp.setNameOfDocument(voterId);
+		documentTemp.setPathOfDocument(pathOfDocument);
+		try {
+			boolean result = customerService.getDocument(documentTemp);
+			assertEquals(true, result);
+		} catch (IBSException exp) {
+			fail("Test Failed: " + exp.getMessage());
+		}
+	}
+	
+	@Test
+	void getDocumentTestNegative() {
+		Document documentTemp = new Document();
+		String voterId = "VoterIDCard";
+		String pathOfDocument = "C://Users//Lenovo//Downloads//sample1.pdf";
+		documentTemp.setNameOfDocument(voterId);
+		documentTemp.setPathOfDocument(pathOfDocument);
+		try {
+			boolean result = customerService.getDocument(documentTemp);
+			assertEquals(false, result);
+		} catch (IBSException exp) {
+			fail("Test Failed: " + exp.getMessage());
+		}
+	}
+	
+	@Test
+	void getDocumentTestForEmptyDocumentDetails() {
+		Document documentTemp = new Document();
+		assertNull(documentTemp.getNameOfDocument());
+	}
+	
+	@Test
+	void getDocumentTestForEmptyDocument() {
+		Document documentTemp = new Document();
+		assertNotNull(documentTemp);
+	}
+	
+	
+	
 }

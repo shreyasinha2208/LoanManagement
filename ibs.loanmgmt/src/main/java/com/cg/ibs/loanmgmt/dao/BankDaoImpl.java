@@ -7,28 +7,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Map;
 
-import com.cg.ibs.loanmgmt.bean.CustomerBean;
 import com.cg.ibs.loanmgmt.bean.LoanMaster;
 
 public class BankDaoImpl implements BankDao {
-	public static DataBase base = new DataBase();
-	public static Map<String, LoanMaster> loanData = base.getLoanMasterData();
-	public static Map<String, CustomerBean> customerData = base.getCustomerBeanData();
-	private LoanMaster loanMaster = new LoanMaster();
+	private static DataBase base;
+	private static Map<String, LoanMaster> loanData;
+	LoanMaster loanMaster = new LoanMaster();
 
 	@Override
 	public boolean saveLoan(LoanMaster loanMaster) {
 		loanData.put(loanMaster.getLoanNumber(), loanMaster);
 		return true;
-	}
-
-	@Override
-	public StringBuilder getDocumentsForVerification() throws IOException, ClassNotFoundException {
-		ObjectInputStream in = new ObjectInputStream(new FileInputStream("./Documents.dat"));
-		StringBuilder sb = new StringBuilder();
-		sb = (StringBuilder) in.readObject();
-		in.close();
-		return sb;
 	}
 
 	@Override
@@ -53,7 +42,6 @@ public class BankDaoImpl implements BankDao {
 					fout.write(data);
 				}
 				isDone = true;
-				// srcFile.delete();
 			} catch (IOException e) {
 				// raise a user defined exception
 			}
@@ -64,11 +52,9 @@ public class BankDaoImpl implements BankDao {
 	}
 
 	@Override
-	public LoanMaster updatePreClosure(
-			LoanMaster loanMaster) { /*
-										 * Updating EMI after approval of
-										 * PreClosure
-										 */
+	public LoanMaster updatePreClosure(LoanMaster loanMaster) { /*
+																 * Updating EMI after approval of PreClosure
+																 */
 		loanMaster.setNumberOfEmis(loanMaster.getTotalNumberOfEmis());
 		loanMaster.setNextEmiDate(null);
 		loanData.replace(loanMaster.getLoanNumber(), loanMaster);
@@ -76,8 +62,8 @@ public class BankDaoImpl implements BankDao {
 	}
 
 	@Override
-	public LoanMaster getPreClosureDetailsForVerification() throws IOException,
-			ClassNotFoundException { /* Fetches Details for verification */
+	public LoanMaster getPreClosureDetailsForVerification()
+			throws IOException, ClassNotFoundException { /* Fetches Details for verification */
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("./PreClosureDetails.dat"));
 		loanMaster = (LoanMaster) in.readObject();
 		in.close();

@@ -17,9 +17,9 @@ import com.cg.ibs.loanmgmt.exception.ExceptionMessages;
 import com.cg.ibs.loanmgmt.exception.IBSException;
 
 public class CustomerDaoImpl implements CustomerDao {
-	public static DataBase base = new DataBase();
-	public static Map<String, LoanMaster> loanData = base.getLoanMasterData();
-	public static Map<String, CustomerBean> customerData = base.getCustomerBeanData();
+	private static DataBase base = new DataBase();
+	private static Map<String, LoanMaster> loanData = base.getLoanMasterData();
+	private static Map<String, CustomerBean> customerData = base.getCustomerBeanData();
 	private static LoanMaster loanMaster = new LoanMaster();
 	private static CustomerBean customer = new CustomerBean();
 
@@ -107,7 +107,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				}
 				isDone = true;
 			} catch (IOException exp) {
-				throw new IBSException(ExceptionMessages.messageForFileNotFound);
+				throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 			}
 		}
 		return isDone;

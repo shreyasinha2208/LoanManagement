@@ -6,12 +6,11 @@ import java.util.List;
 import com.cg.ibs.loanmgmt.bean.LoanMaster;
 
 public interface BankService {
-	public StringBuilder getDocumentsForVerification() throws IOException, ClassNotFoundException;
 
 	public LoanMaster getLoanDetailsForVerification() throws IOException, ClassNotFoundException;
 
-	public LoanMaster getPreClosureDetailsForVerification() throws IOException, ClassNotFoundException; // Getting Loan
-																										// Details
+	public LoanMaster getPreClosureDetailsForVerification()
+			throws IOException, ClassNotFoundException; /* Getting Loan Details */
 
 	public LoanMaster updatePreClosure(LoanMaster loanMaster);
 

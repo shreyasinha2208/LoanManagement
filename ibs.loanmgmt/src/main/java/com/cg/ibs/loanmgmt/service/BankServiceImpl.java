@@ -18,16 +18,12 @@ public class BankServiceImpl implements BankService {
 		bankDao.saveLoan(loanMaster);
 	}
 
-	public StringBuilder getDocumentsForVerification() throws IOException, ClassNotFoundException {
-		return bankDao.getDocumentsForVerification();
-	}
-
 	public LoanMaster getLoanDetailsForVerification() throws IOException, ClassNotFoundException {
 		return bankDao.getLoanDetailsForVerification();
 	}
 
 	public List<String> getFilesAvailable() {
-		List<String> files = new ArrayList<>();
+		List<String> files = new ArrayList<String>();
 		File upLoc = new File(UPLOADS_LOC);
 		for (File f : upLoc.listFiles()) {
 			files.add(f.getName());

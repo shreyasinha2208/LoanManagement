@@ -38,8 +38,8 @@ public class CustomerServiceImpl implements CustomerService {
 	public double calculateEmi(Loan loan) {
 		LoanBean loanBeanTemp = new LoanBean();
 		float rate = loan.getInterestRate() / (12 * 100);
-		loanBeanTemp.setEmiAmount((((loan.getLoanAmount() * rate * Math.pow((rate + 1), loan.getLoanTenure()))
-				/ (Math.pow((rate + 1), loan.getLoanTenure()) - 1))));
+		loanBeanTemp.setEmiAmount(((loan.getLoanAmount() * rate * Math.pow((rate + 1), loan.getLoanTenure()))
+				/ (Math.pow((rate + 1), loan.getLoanTenure()) - 1)));
 		return loanBeanTemp.getEmiAmount();
 
 	}
@@ -54,8 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
 		loanMaster.setNextEmiDate(loanMaster.getAppliedDate().plusMonths(1));
 		loanMaster.setCustomerBean(getCustomerDetails(userId));
 		loanMaster.setTotalNumberOfEmis(loanMaster.getLoanTenure());
-		loanMaster.setLoanNumber(
-				loanMaster.generateLoanNumber()); /* Generates Loan Number */
+		loanMaster.setLoanNumber(loanMaster.generateLoanNumber()); /* Generates Loan Number */
 		loanMaster.setLoanType(loan.getLoanType());
 		loanMaster.setInterestRate(loan.getInterestRate());
 		return loanMaster;
@@ -80,7 +79,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 		ObjectOutputStream out1 = new ObjectOutputStream(new FileOutputStream("./LoanDetails.dat"));
 		out1.writeObject(loanMaster);
-		out1.close();
 		return true;
 	}
 
@@ -185,7 +183,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public boolean verifyCustomer(String userId) {
-		// TODO Auto-generated method stub
 		return customerDao.verifyCustomer(userId);
 	}
 

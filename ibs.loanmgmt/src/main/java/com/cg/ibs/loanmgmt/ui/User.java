@@ -35,8 +35,7 @@ public class User implements ExceptionMessages {
 			String userLoginInput = read.next();
 			Pattern pattern = Pattern.compile("[0-9]{1}");
 			Matcher matcher = pattern.matcher(userLoginInput);
-			boolean matches = matcher.matches();
-			if (matches == true) {
+			if (matcher.matches()) {
 				int ordinal = Integer.parseInt(userLoginInput);
 				if (ordinal >= 1 && ordinal < (UserOptions.values().length) + 1) {
 					choice = UserOptions.values()[ordinal - 1];
@@ -55,7 +54,7 @@ public class User implements ExceptionMessages {
 					choice = null;
 					try {
 						if (choice == null) {
-							throw new IBSException(ExceptionMessages.messageForWrongInput);
+							throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 						}
 					} catch (IBSException exp) {
 						System.out.println(exp.getMessage());
@@ -65,7 +64,7 @@ public class User implements ExceptionMessages {
 				}
 			} else {
 				try {
-					throw new IBSException(ExceptionMessages.messageForInputMismatch);
+					throw new IBSException(ExceptionMessages.MESSAGEFORINPUTMISMATCH);
 				} catch (IBSException exp) {
 					System.out.println(exp.getMessage());
 				}
@@ -94,8 +93,7 @@ public class User implements ExceptionMessages {
 			String customerLoginInput = read.next();
 			Pattern pattern = Pattern.compile("[0-9]{1}");
 			Matcher matcher = pattern.matcher(customerLoginInput);
-			boolean matches = matcher.matches();
-			if (matches == true) {
+			if (matcher.matches()) {
 				int ordinal = Integer.parseInt(customerLoginInput);
 				if (ordinal >= 1 && ordinal < (CustomerOptions.values().length) + 1) {
 					customerChoice = CustomerOptions.values()[ordinal - 1];
@@ -124,14 +122,14 @@ public class User implements ExceptionMessages {
 					try {
 						if (customerChoice == null)
 
-							throw new IBSException(ExceptionMessages.messageForWrongInput);
+							throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 					} catch (IBSException exp) {
 						System.out.println(exp.getMessage());
 					}
 				}
 			} else {
 				try {
-					throw new IBSException(ExceptionMessages.messageForInputMismatch);
+					throw new IBSException(ExceptionMessages.MESSAGEFORINPUTMISMATCH);
 				} catch (IBSException exp) {
 					System.out.println(exp.getMessage());
 				}
@@ -153,8 +151,7 @@ public class User implements ExceptionMessages {
 			String customerLoginInput = read.next();
 			Pattern pattern = Pattern.compile("[0-9]{1}");
 			Matcher matcher = pattern.matcher(customerLoginInput);
-			boolean matches = matcher.matches();
-			if (matches == true) {
+			if (matcher.matches()) {
 				int ordinal = Integer.parseInt(customerLoginInput);
 				if (ordinal >= 1 && ordinal < (LoanTypes.values().length) + 1) {
 					choice = LoanTypes.values()[ordinal - 1];
@@ -180,7 +177,7 @@ public class User implements ExceptionMessages {
 					choice = null;
 					try {
 						if (choice == null) {
-							throw new IBSException(ExceptionMessages.messageForWrongInput);
+							throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 						}
 					} catch (IBSException exp) {
 						System.out.println(exp.getMessage());
@@ -190,7 +187,7 @@ public class User implements ExceptionMessages {
 
 			} else {
 				try {
-					throw new IBSException(ExceptionMessages.messageForInputMismatch);
+					throw new IBSException(ExceptionMessages.MESSAGEFORINPUTMISMATCH);
 				} catch (IBSException exp) {
 					System.out.println(exp.getMessage());
 				}
@@ -205,7 +202,7 @@ public class User implements ExceptionMessages {
 		System.out.print("Interest Rate for Home Loan is : ");
 		System.out.println("8.5 %\n");
 		boolean check = false;
-		while (check != true) {
+		while (!check) {
 			System.out.println("Enter the Loan Amount required  : ");
 			System.out.println("\n\t***Minimum Loan Limit = 10 Thousand***");
 			System.out.println("\t***Maximum Loan Limit = 2 Crores***");
@@ -216,12 +213,12 @@ public class User implements ExceptionMessages {
 			loan.setLoanType(LoanType.HOME_LOAN);
 			loan.setInterestRate(8.5f);
 			check = customerService.loanCustomerInputVerificationService(loanService.setLoanDetails(loan));
-			if (check == false) {
+			if (check) {
 				System.out.println("INVALID INPUT! Adhere to the Loan Limits Specified \n ");
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println("---------*********---------\n\n"+loan);
+		System.out.println("---------*********---------\n\n" + loan);
 		addLoan(loan);
 	}
 
@@ -230,7 +227,7 @@ public class User implements ExceptionMessages {
 		System.out.print("Interest Rate for Home Loan is : ");
 		System.out.println("10.75 %");
 		boolean check = false;
-		while (check != true) {
+		while (!check) {
 			System.out.println("Enter the Loan Amount required  : ");
 			System.out.println("***Minimum Loan Limit = 10 Thousand***");
 			System.out.println("***Maximum Loan Limit = 20 Lakhs***");
@@ -241,12 +238,12 @@ public class User implements ExceptionMessages {
 			loan.setLoanType(LoanType.PERSONAL_LOAN);
 			loan.setInterestRate(10.75f);
 			check = customerService.loanCustomerInputVerificationService(loanService.setLoanDetails(loan));
-			if (check == false) {
+			if (!check) {
 				System.out.println("INVALID INPUT! Adhere to the Loan Limits Specified \n ");
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println("---------*********---------\n\n"+loan);
+		System.out.println("---------*********---------\n\n" + loan);
 		addLoan(loan);
 	}
 
@@ -255,7 +252,7 @@ public class User implements ExceptionMessages {
 		System.out.print("Interest Rate for Vehicle Loan is : ");
 		System.out.println("9.25 %");
 		boolean check = false;
-		while (check != true) {
+		while (!check) {
 			System.out.println("Enter the Loan Amount required  : ");
 			System.out.println("***Minimum Loan Limit = 10 Thousand***");
 			System.out.println("***Maximum Loan Limit = 30 Lakhs***");
@@ -271,7 +268,7 @@ public class User implements ExceptionMessages {
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println("---------*********---------\n\n"+loan);
+		System.out.println("---------*********---------\n\n" + loan);
 		addLoan(loan);
 	}
 
@@ -280,7 +277,7 @@ public class User implements ExceptionMessages {
 		System.out.print("Interest Rate for Vehicle Loan is : ");
 		System.out.println("11.35 %");
 		boolean check = false;
-		while (check != true) {
+		while (!check) {
 			System.out.println("Enter the Loan Amount required  : ");
 			System.out.println("***Minimum Loan Limit = 10 Thousand***");
 			System.out.println("***Maximum Loan Limit = 50 Lakhs***");
@@ -292,11 +289,11 @@ public class User implements ExceptionMessages {
 			loan.setInterestRate(11.35f);
 			check = customerService.loanCustomerInputVerificationService(loanService.setLoanDetails(loan));
 			if (check == false) {
-				throw new IBSException(ExceptionMessages.messageForWrongInput);
+				throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 			}
 		}
 		loan.setEmiAmount(customerService.calculateEmi(loanService.setLoanDetails(loan)));
-		System.out.println("---------*********---------\n\n"+loan);
+		System.out.println("---------*********---------\n\n" + loan);
 		addLoan(loan);
 	}
 
@@ -308,12 +305,12 @@ public class User implements ExceptionMessages {
 		Pattern pattern = Pattern.compile("[0-9]{1}");
 		Matcher matcher = pattern.matcher(applyLoanChoice);
 		boolean matches = matcher.matches();
-		if (matches == true) {
+		if (matches) {
 			int selection = Integer.parseInt(applyLoanChoice);
 			switch (selection) {
 			case 1: {
 				System.out.println("\nNew Loan Application\n");
-				String custId = new String("");
+				String custId = "";
 				do {
 					System.out.println("Enter your customer id :- ");
 					custId = read.next();
@@ -323,9 +320,9 @@ public class User implements ExceptionMessages {
 							customerService.getLoanValues(loanService.setLoanDetails(loanBean), custId));
 					uploadDocument();
 				} catch (FileNotFoundException exp) {
-					throw new IBSException(ExceptionMessages.messageForFileNotFound);
+					throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 				} catch (IOException exp) {
-					throw new IBSException(ExceptionMessages.messageForIOException);
+					throw new IBSException(ExceptionMessages.MESSAGEFORIOEXCEPTION);
 				}
 			}
 
@@ -335,7 +332,7 @@ public class User implements ExceptionMessages {
 			}
 		} else {
 			try {
-				throw new IBSException(ExceptionMessages.messageForInputMismatch);
+				throw new IBSException(ExceptionMessages.MESSAGEFORINPUTMISMATCH);
 			} catch (IBSException exp) {
 				System.out.println(exp.getMessage());
 			}
@@ -349,7 +346,7 @@ public class User implements ExceptionMessages {
 		Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{0,7}");
 		Matcher matcher = pattern.matcher(nameOfDocument);
 		boolean matches = matcher.matches();
-		if (matches == true) {
+		if (matches) {
 			document.setNameOfDocument(nameOfDocument);
 			System.out.println("Enter the path of the document to be uploaded.(Including File Name)");
 			document.setPathOfDocument(read.next());
@@ -358,14 +355,14 @@ public class User implements ExceptionMessages {
 				System.out.println("Document successfully uploaded.");
 			} else {
 				try {
-					throw new IBSException(ExceptionMessages.messageForFileNotFound);
+					throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 				} catch (IBSException exp) {
 					System.out.println(exp.getMessage());
 				}
 			}
 		} else {
 			try {
-				throw new IBSException(ExceptionMessages.messageForWrongFileNameInput);
+				throw new IBSException(ExceptionMessages.MESSAGEFORWRONGFILENAMEINPUT);
 			} catch (IBSException exp) {
 				System.out.println(exp.getMessage());
 				exp.getMessage();
@@ -374,7 +371,7 @@ public class User implements ExceptionMessages {
 	}
 
 	// Pay EMI
-	private void payEMI(String loanNumber) {
+	private void payEMI(String loanNumber) throws IBSException {
 
 		loanMaster = customerService.verifyEmiApplicable(loanNumber);
 		if (loanMaster == null) {
@@ -382,13 +379,24 @@ public class User implements ExceptionMessages {
 		} else {
 			System.out.println(loanMaster);
 			System.out.println("\nEnter the amount to pay EMI:");
-			loanMaster = customerService.updateEMI(read.nextDouble(), loanMaster);
-			if (loanMaster == null) {
-				System.out.println("Transaction Unsuccessful! Try Again");
+			String emiPaymentAmount = read.next();
+			Pattern pattern = Pattern.compile("([0-9]{4,7})\\.([0-9]{1,2})");
+			Matcher matcher = pattern.matcher(emiPaymentAmount);
+			if (matcher.matches()) {
+				loanMaster = customerService.updateEMI(Double.valueOf(emiPaymentAmount), loanMaster);
+				if (loanMaster == null) {
+					System.out.println("Transaction Unsuccessful! Try Again");
+				} else {
+					System.out.println("Transaction successful! \nNumber Of EMI's left : "
+							+ (loanMaster.getTotalNumberOfEmis() - loanMaster.getNumberOfEmis())
+							+ "\nNext date for EMI payment is : " + loanMaster.getNextEmiDate());
+				}
 			} else {
-				System.out.println("Transaction successful! \nNumber Of EMI's left : "
-						+ (loanMaster.getTotalNumberOfEmis() - loanMaster.getNumberOfEmis())
-						+ "\nNext date for EMI payment is : " + loanMaster.getNextEmiDate());
+				try {
+					throw new IBSException(ExceptionMessages.MESSAGEFORINPUTMISMATCHATEMI);
+				} catch (IBSException exp) {
+					System.out.println(exp.getMessage());
+				}
 			}
 		}
 	}
@@ -400,7 +408,7 @@ public class User implements ExceptionMessages {
 		Pattern pattern = Pattern.compile("[1-9]{1}[0-9]{2,3}");
 		Matcher matcher = pattern.matcher(loanNumber);
 		boolean matches = matcher.matches();
-		if (matches == true) {
+		if (matches) {
 			boolean check = customerService.verifyLoanNumber(loanNumber);
 			if (check) {
 				System.out.println("Your Loan against Loan Number : " + loanNumber
@@ -417,7 +425,7 @@ public class User implements ExceptionMessages {
 							System.out.println("Thank You!\n Your loan has been sent for verification.");
 						}
 					} catch (IOException exp) {
-						throw new IBSException(ExceptionMessages.messageForIOException);
+						throw new IBSException(ExceptionMessages.MESSAGEFORIOEXCEPTION);
 					}
 				case 2:
 					init();
@@ -428,7 +436,7 @@ public class User implements ExceptionMessages {
 			}
 		} else {
 			try {
-				throw new IBSException(ExceptionMessages.messageForInvalidLoanNumber);
+				throw new IBSException(ExceptionMessages.MESSAGEFORINVALIDLOANNUMBER);
 			} catch (IBSException exp) {
 				System.out.println(exp.getMessage());
 			}
@@ -437,12 +445,12 @@ public class User implements ExceptionMessages {
 
 	// VIEW HISTORY
 	private void getLoanDetails(String userId) {
-		List<LoanMaster> loanMasters = new ArrayList<LoanMaster>();
+		List<LoanMaster> loanMasters = new ArrayList<>();
 		loanMasters = customerService.getHistory(userId);
 		/* getting collection of all the loans related to given userID */
 		try {
-			if (loanMasters.isEmpty() == true) {
-				throw new IBSException(ExceptionMessages.messageForWrongInput);
+			if (loanMasters.isEmpty()) {
+				throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 			} else {
 				System.out.println(loanMasters);
 			}
@@ -483,7 +491,7 @@ public class User implements ExceptionMessages {
 				adminChoice = null;
 				try {
 					if (adminChoice == null) {
-						throw new IBSException(ExceptionMessages.messageForWrongInput);
+						throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 					}
 				} catch (IBSException exp) {
 					System.out.println(exp.getMessage());
@@ -508,7 +516,7 @@ public class User implements ExceptionMessages {
 		if (bankService.downloadDocument(dwnLoc, selectedFileName)) {
 			System.out.println("Documents downloaded.");
 		} else {
-			throw new IBSException(ExceptionMessages.messageForFileNotFound);
+			throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 		}
 	}
 
@@ -518,13 +526,13 @@ public class User implements ExceptionMessages {
 			try {
 				loanMaster = bankService.getLoanDetailsForVerification();
 			} catch (ClassNotFoundException | IOException exp) {
-				throw new IBSException(ExceptionMessages.messageForIOException);
+				throw new IBSException(ExceptionMessages.MESSAGEFORIOEXCEPTION);
 			}
 			System.out.println("Downloading Document");
 			try {
 				selectDocument();
 			} catch (Exception exp) {
-				throw new IBSException(ExceptionMessages.messageForFileNotFound);
+				throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 			}
 			System.out.println("Application For Loan : " + loanMaster);
 			System.out.println("Document for the above loan has been downloaded in the downloads folder ");
@@ -535,14 +543,14 @@ public class User implements ExceptionMessages {
 				try {
 					bankService.verifyLoan(loanMaster);
 				} catch (Exception exp) {
-					throw new IBSException(ExceptionMessages.messageForFileNotFound);
+					throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 				}
 				break;
 			case 2:
 				adminInit();
 				break;
 			default:
-				throw new IBSException(ExceptionMessages.messageForWrongInput);
+				throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 			}
 		}
 
@@ -553,7 +561,7 @@ public class User implements ExceptionMessages {
 		try {
 			loanMaster = bankService.getPreClosureDetailsForVerification();
 		} catch (ClassNotFoundException | IOException exp) {
-			throw new IBSException(ExceptionMessages.messageForFileNotFound);
+			throw new IBSException(ExceptionMessages.MESSAGEFORFILENOTFOUND);
 		} /* fetch data for verification */
 		System.out.println("Pre-Closure application For Loan : " + loanMaster);
 		System.out.println("\n1. Approve Loan \n2. Decline Loan");
@@ -568,7 +576,7 @@ public class User implements ExceptionMessages {
 			adminInit();
 			break;
 		default:
-			throw new IBSException(ExceptionMessages.messageForWrongInput);
+			throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 		}
 	}
 

@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.cg</groupId>
-  <artifactId>ibs.loanmgmt2</artifactId>
-  <version>2.0.1-SNAPSHOT</version>
-  <dependencies>
-  <dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.cg</groupId>
+    <artifactId>ibs.loanmgmt2</artifactId>
+    <version>2.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.5.0</version>
@@ -16,5 +18,12 @@
             <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>6</version>
+            <scope>system</scope>
+            <systemPath>C:/oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar</systemPath>
+        </dependency>
+    </dependencies>
 </project>

@@ -436,11 +436,30 @@ class CustomerServiceImplTest {
 		assertTrue(actual);
 	}
 
+//	@Test
+//	void sendLoanForVerificationNegTest() throws FileNotFoundException, IOException {
+//		//LoanMaster loanMasterTemp = null;
+//		loanMasterTemp.setAppliedDate(LocalDate.of(2018, Month.SEPTEMBER, 8));
+//		loanMasterTemp.setLoanType(LoanType.PERSONAL_LOAN);
+//		loanMasterTemp.setEmiAmount(23245.0);
+//		loanMasterTemp.setInterestRate(10.75f);
+//		loanMasterTemp.setLoanAmount(500000);
+//		loanMasterTemp.setLoanTenure(24);
+//		loanMasterTemp.setLoanNumber(999);
+//		CustomerBean customerBean = new CustomerBean("Dev", "Goyal", "12347", "dgoyal");
+//		loanMasterTemp.setCustomerBean(customerBean);
+//		loanMasterTemp.setNumberOfEmis(23);
+//		loanMasterTemp.setTotalNumberOfEmis(24);
+//		loanMasterTemp.setNextEmiDate(LocalDate.of(2019, 10, 14));
+//		boolean actual = customerService.sendLoanForVerification(loanMasterTemp);
+//		assertTrue(actual);
+//	}
+
 	@Test
 	void getDocumentTestPositive() {
 		Document documentTemp = new Document();
 		String voterId = "VoterIDCard";
-		String pathOfDocument = "C://Users//Lenovo//Downloads//sample.pdf";
+		String pathOfDocument = "C://Users//DEVGOYAL//Downloads//sample.pdf";
 		documentTemp.setNameOfDocument(voterId);
 		documentTemp.setPathOfDocument(pathOfDocument);
 		try {

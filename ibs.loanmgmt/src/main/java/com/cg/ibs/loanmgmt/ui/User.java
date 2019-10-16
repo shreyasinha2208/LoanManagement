@@ -537,7 +537,7 @@ public class User implements ExceptionMessages {
 			System.out.println("Application For Loan : " + loanMaster);
 			System.out.println("Document for the above loan has been downloaded in the downloads folder ");
 			System.out.println("Verification Response : ");
-			System.out.println("1. Approve Loan /n 2. Decline Loan");
+			System.out.println("1. Approve Loan \n 2. Decline Loan");
 			switch (read.nextInt()) {
 			case 1:
 				try {

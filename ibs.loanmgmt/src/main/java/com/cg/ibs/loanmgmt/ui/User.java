@@ -213,7 +213,7 @@ public class User implements ExceptionMessages {
 			loan.setLoanType(LoanType.HOME_LOAN);
 			loan.setInterestRate(8.5f);
 			check = customerService.loanCustomerInputVerificationService(loanService.setLoanDetails(loan));
-			if (check) {
+			if (!check) {
 				System.out.println("INVALID INPUT! Adhere to the Loan Limits Specified \n ");
 			}
 		}
@@ -263,7 +263,7 @@ public class User implements ExceptionMessages {
 			loan.setLoanType(LoanType.VEHICLE_LOAN);
 			loan.setInterestRate(9.25f);
 			check = customerService.loanCustomerInputVerificationService(loanService.setLoanDetails(loan));
-			if (check == false) {
+			if (!check) {
 				System.out.println("INVALID INPUT! Adhere to the Loan Limits Specified \n ");
 			}
 		}
@@ -288,7 +288,7 @@ public class User implements ExceptionMessages {
 			loan.setLoanType(LoanType.EDUCATION_LOAN);
 			loan.setInterestRate(11.35f);
 			check = customerService.loanCustomerInputVerificationService(loanService.setLoanDetails(loan));
-			if (check == false) {
+			if (!check) {
 				throw new IBSException(ExceptionMessages.MESSAGEFORWRONGINPUT);
 			}
 		}

@@ -408,14 +408,14 @@ class CustomerServiceImplTest {
 		assertNotNull(actual);
 	}
 
-//		void getLoanValuesNeg(){
-//		loanTemp.setEmiAmount(96896.0);
-//	loanTemp.setLoanAmount(1000.00);
-//		loanTemp.setLoanTenure(60);
-//		loanTemp.setLoanType(LoanType.EDUCATION_LOAN);
-//		LoanMaster actual = customerService.getLoanValues(loanTemp, "ssinha");
-//		assertNull(actual);	
-//	}
+	void getLoanValuesNeg() {
+		loanTemp.setEmiAmount(96896.0);
+		loanTemp.setLoanAmount(1000.00);
+		loanTemp.setLoanTenure(60);
+		loanTemp.setLoanType(LoanType.EDUCATION_LOAN);
+		LoanMaster actual = customerService.getLoanValues(loanTemp, "ssinha");
+		assertNull(actual);
+	}
 
 	@Test
 	void sendLoanforVerificationPos() throws FileNotFoundException, IOException {
@@ -450,7 +450,7 @@ class CustomerServiceImplTest {
 			fail("Test Failed: " + exp.getMessage());
 		}
 	}
-	
+
 	@Test
 	void getDocumentTestNegative() {
 		Document documentTemp = new Document();
@@ -465,19 +465,17 @@ class CustomerServiceImplTest {
 			fail("Test Failed: " + exp.getMessage());
 		}
 	}
-	
+
 	@Test
 	void getDocumentTestForEmptyDocumentDetails() {
 		Document documentTemp = new Document();
 		assertNull(documentTemp.getNameOfDocument());
 	}
-	
+
 	@Test
 	void getDocumentTestForEmptyDocument() {
 		Document documentTemp = new Document();
 		assertNotNull(documentTemp);
 	}
-	
-	
-	
+
 }
